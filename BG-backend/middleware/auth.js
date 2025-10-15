@@ -1,7 +1,7 @@
 import jwt from "jsonwebtoken";
 import { apiError } from "../utils/apiError.js";
 
-const auth = async (req, res) => {
+const auth = async (req, res, next) => {
   const token = req.header("Authorization").replace("Bearer ", "");
   if (!token) {
     throw new apiError("Unauthorized");
