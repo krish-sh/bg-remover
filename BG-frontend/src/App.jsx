@@ -1,4 +1,4 @@
-import { Routes, Router } from "react-router-dom";
+import { Routes, Route } from "react-router-dom";
 import toast, { Toaster } from "react-hot-toast";
 import NavBar from "./component/NavBar";
 import Home from "./pages/Home";
@@ -13,10 +13,10 @@ export default function App() {
         <Toaster />
         <NavBar />
         <Routes>
-          <Router path="/" element={<Home />} />
-          <Router path="/login" element={<Login />} />
-          <Router path="/result" element={<Register />} />
-          <Router path="/result" element={<Result />} />
+          <Route path="/" element={<Home />} />
+          <Route path="/login" element={<Login />} />
+          <Route path="/register" element={<Register />} />
+          <Route path="/result" element={<Result />} />
         </Routes>
       </div>
     </div>

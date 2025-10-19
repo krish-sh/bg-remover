@@ -4,7 +4,7 @@ import axios from "axios";
 
 export const AppContext = createContext();
 
-const AppcontextProvider = ({ children }) => {
+const AppContextProvider = ({ children }) => {
   const backendUrl = "http://localhost:4000";
 
   const [user, setUser] = useState(null);
@@ -60,7 +60,7 @@ const AppcontextProvider = ({ children }) => {
       return data;
     } catch (error) {
       console.error(
-        "handle ligin error",
+        "handle login error",
         error.response?.data || error.message
       );
     } finally {
@@ -97,9 +97,10 @@ const AppcontextProvider = ({ children }) => {
     loading,
     setUser,
     setLoading,
+    setToken,
   };
 
-  return <AppContect.Provider value={value}>{children}</AppContect.Provider>;
+  return <AppContext.Provider value={value}>{children}</AppContext.Provider>;
 };
 
-export default AppcontextProvider;
+export default AppContextProvider;
