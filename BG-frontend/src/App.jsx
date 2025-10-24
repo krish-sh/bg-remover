@@ -9,9 +9,9 @@ import Result from "./pages/Result";
 export default function App() {
   return (
     <div className="container max-auto">
-      <div className="w-full h-full">
+      <div className="w-full h-full min-w-screen">
         <Toaster />
-        <NavBar />
+
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/login" element={<Login />} />

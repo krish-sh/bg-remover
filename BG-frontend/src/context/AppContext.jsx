@@ -88,6 +88,12 @@ const AppContextProvider = ({ children }) => {
   //   fetchUser();
   // }, [token]);
 
+  const handleLogout = () => {
+    localStorage.removeItem("token");
+    setToken(null);
+    setUser(null);
+  };
+
   const value = {
     backendUrl,
     handleLogin,
@@ -98,6 +104,7 @@ const AppContextProvider = ({ children }) => {
     setUser,
     setLoading,
     setToken,
+    handleLogout,
   };
 
   return <AppContext.Provider value={value}>{children}</AppContext.Provider>;
