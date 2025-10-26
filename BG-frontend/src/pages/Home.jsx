@@ -3,6 +3,7 @@ import Header from "../component/Header";
 import NavBar from "../component/NavBar";
 import Steps from "../component/Steps";
 import BigSlide from "../component/BigSlide";
+import Upload from "../component/Upload";
 
 export default function Home() {
   return (
@@ -11,6 +12,7 @@ export default function Home() {
       <Header />
       <Steps />
       <BigSlide />
+      <Upload/>
     </div>
   );
 }
