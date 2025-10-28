@@ -19,7 +19,6 @@ export default function App() {
           <Route path="/register" element={<Register />} />
           <Route path="/result" element={<Result />} />
         </Routes>
-        <Fotter/>
       </div>
     </div>
   );

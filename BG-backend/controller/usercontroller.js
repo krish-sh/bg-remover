@@ -18,13 +18,15 @@ const register = async (req, res) => {
     }
 
     const salt = await bcrypt.genSalt(10);
-    const hashedToken = await bcrypt.hash(password, salt);
+    const hashedPassword = await bcrypt.hash(password, salt);
 
     const newUser = new User({
       username,
       email,
-      password: hashedToken,
+      password: hashedPassword,
     });
+
+    await newUser.save();
 
     const token = jwt.sign(
       { id: newUser._id, email: newUser.email },
@@ -32,7 +34,6 @@ const register = async (req, res) => {
       { expiresIn: "7d" }
     );
 
-    await newUser.save();
     newUser.password = undefined;
 
     res.cookie("token", token, {
@@ -43,13 +44,15 @@ const register = async (req, res) => {
     });
 
     res.status(200).json({
+      success: true,
       message: "user register successfully",
       token,
       user: newUser,
     });
     console.log("user now");
   } catch (error) {
-    throw new apiError(400, "Register user error");
+    console.error("Register user error:", error.message);
+    res.status(500).json({ success: false, message: error.message });
   }
 };
 
@@ -92,6 +95,7 @@ const login = async (req, res) => {
     });
 
     res.status(200).json({
+      success: true,
       message: "User login successfully",
       token,
       user: existedUser,

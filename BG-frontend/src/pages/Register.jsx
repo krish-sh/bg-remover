@@ -26,7 +26,7 @@ export default function Register() {
   return (
     <div className="flex justify-center items-center h-screen ">
       <div className="bg-white shadow-xl rounded-2xl p-10 w-full max-w-md border border-gray-200">
-        <h2 className="text-3xl font-bold text-center mb-8">Create Account</h2>
+        <h2 className="text-3xl font-bold text-center mb-8">Register</h2>
 
         <form onSubmit={handleSignup} className="space-y-6">
           <div>

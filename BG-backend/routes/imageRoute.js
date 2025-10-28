@@ -5,6 +5,6 @@ import { bgRemover } from "../controller/imageController.js";
 
 const imageRouter = express.Router();
 
-imageRouter.post("/bg-remover", upload.single("image"), auth, bgRemover);
+imageRouter.post("/bgRemover", upload.single("image"), auth, bgRemover);
 
 export default imageRouter;

@@ -4,6 +4,7 @@ import NavBar from "../component/NavBar";
 import Steps from "../component/Steps";
 import BigSlide from "../component/BigSlide";
 import Upload from "../component/Upload";
+import Fotter from "../component/Fotter";
 
 export default function Home() {
   return (
@@ -13,6 +14,7 @@ export default function Home() {
       <Steps />
       <BigSlide />
       <Upload/>
+      <Fotter/>
     </div>
   );
 }

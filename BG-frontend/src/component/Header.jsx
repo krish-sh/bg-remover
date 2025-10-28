@@ -1,7 +1,10 @@
-import React from "react";
+import React, { useContext } from "react";
 import video from "../assets/video.mp4";
+import { AppContext } from "../context/AppContext";
 
 export default function Header() {
+  const { removeBg } = useContext(AppContext);
+
   return (
     <div className="flex items-center justify-between max-sm:flex-col-reverse gap-y-10 px-4 mb-14 mt-10 lg:px-44 sm:mt-20">
       {/* left side   */}
@@ -25,7 +28,7 @@ export default function Header() {
           clicks.
         </p>
         <div>
-          <input type="file" id="upload1" accept="image/*" hidden />
+          <input onChange={e => removeBg(e.target.files[0])} type="file" id="upload1" accept="image/*" hidden />
           <label
             className="inline-flex gap-3 px-8 py-3.5 md:px-6 md:py-2.5 rounded-full cursor-pointer bg-gradient-to-r from-rose-700 to-amber-500 m-auto hover:scale-105 transition-all duration-700"
             htmlFor="upload1"

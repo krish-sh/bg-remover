@@ -4,7 +4,6 @@ import FormData from "form-data";
 import User from "../models/userModel.js";
 import ApiResponse from "../utils/apiResponse.js";
 import { apiError } from "../utils/apiError.js";
-import { arrayBuffer } from "stream/consumers";
 
 const bgRemover = async (req, res) => {
   try {
@@ -29,22 +28,33 @@ const bgRemover = async (req, res) => {
         headers: {
           "x-api-key": process.env.API_KEY,
         },
-        responseType: arrayBuffer,
+        responseType: "arraybuffer",
       }
     );
     console.log("user");
 
     const base64Image = Buffer.from(data, "binary").toString("base64");
-    const resultData = `data:${req.file.mimetype},base64,${base64Image}`;
+    const resultData = `data:image/png;base64,${base64Image}`;;
 
     res.status(200).json({
+      success: true,
       message: "bg-remove successfully",
       resultData,
     });
   } catch (error) {
-    console.log("error:", error);
+    console.error("❌ Error in bgRemover:");
+    if (error.response) {
+      console.error("Status:", error.response.status);
+      console.error("Data:", error.response.data);
+    } else {
+      console.error("Message:", error.message);
+    }
 
-    throw new apiError("bg-remover error");
+    return res.status(500).json({
+      success: false,
+      message: "Background removal failed",
+      error: error.message,
+    });
   }
 };
 
