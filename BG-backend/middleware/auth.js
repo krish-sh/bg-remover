@@ -1,5 +1,5 @@
 import jwt from "jsonwebtoken";
-import { apiError } from "../utils/apiError.js";
+
 
 const auth = async (req, res, next) => {
   try {

@@ -123,7 +123,7 @@ const AppContextProvider = ({ children }) => {
       const formData = new FormData();
       image && formData.append("image", image);
 
-      console.log("🟡 Token being sent:", token);
+     
 
       const { data } = await axios.post(
         `${backendUrl}/api/images/bgRemover`,
@@ -135,7 +135,7 @@ const AppContextProvider = ({ children }) => {
           },
         }
       );
-      console.log("🟢 Response from backend:", data);
+      
 
       if (data.success) {
         console.log("✅ Background removed successfully");
