@@ -8,7 +8,7 @@ import Cookies from "js-cookie";
 export const AppContext = createContext();
 
 const AppContextProvider = ({ children }) => {
-  const backendUrl = "http://localhost:4000";
+  const backendUrl = "https://bg-remover-2-ze5n.onrender.com";
 
   const navigate = useNavigate();
 
@@ -22,11 +22,6 @@ const AppContextProvider = ({ children }) => {
   const handleRegister = async (formData) => {
     try {
       setLoading(true);
-      console.log(
-        "sending register request to:",
-        `${backendUrl}/api/users/register`,
-        formData
-      );
 
       const { data } = await axios.post(
         `${backendUrl}/api/users/register`,
@@ -123,8 +118,6 @@ const AppContextProvider = ({ children }) => {
       const formData = new FormData();
       image && formData.append("image", image);
 
-     
-
       const { data } = await axios.post(
         `${backendUrl}/api/images/bgRemover`,
         formData,
@@ -135,7 +128,6 @@ const AppContextProvider = ({ children }) => {
           },
         }
       );
-      
 
       if (data.success) {
         console.log("✅ Background removed successfully");
